@@ -26,6 +26,7 @@ import { OrderComponent } from './order/order.component';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
 import { OrderItemsComponent } from './order/order-items/order-items.component';
+import { OrderService } from './order/order.service';
 registerLocaleData(localePt);
 
 @NgModule({
@@ -52,7 +53,12 @@ registerLocaleData(localePt);
     FormsModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [RestaurantsService, ShoppingCartService, {provide: LOCALE_ID, useValue: 'pt'}],
+  providers: [
+    RestaurantsService, 
+    ShoppingCartService, 
+    {provide: LOCALE_ID, useValue: 'pt'},
+    OrderService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
