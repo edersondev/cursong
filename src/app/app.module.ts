@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+
 import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
@@ -24,6 +26,7 @@ import localePt from '@angular/common/locales/pt';
 
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { SharedModule } from './shared/shared.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 registerLocaleData(localePt);
 
@@ -39,7 +42,8 @@ registerLocaleData(localePt);
     ShoppingCartComponent,
     MenuItemComponent,
     ReviewsComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,7 @@ registerLocaleData(localePt);
     RouterModule.forRoot(ROUTES, {preloadingStrategy: PreloadAllModules})
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     {provide: LOCALE_ID, useValue: 'pt'}
   ],
   bootstrap: [AppComponent]
